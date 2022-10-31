@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    padding: 0; /*this corrected the padding on the left where the images wouldn't align perfectly in mobile viewpoint*/
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* flex wrap ensures flex items will wrap onto another line
+justify content property with a value of center will center items on the main axis
+the gap property will set a gap between rows and columns*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none; /*this gets rid of the bullet points that were coming up under the li element*/
+}
+
+/*each flex item has an initial length of 350px and changes cursor to a pointer on hover*/
+.gallery>li {
+    flex-basis: 350px;
+    position: relative;
+    cursor: crosshair;
+}
+
+/*applying object fit to an image keeps its aspect ratio and makes sure it clips to fit*/
+.gallery li img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: violet;
+}
+/*this hides the border on hover over with cursor*/
+.gallery li img:hover{
+    border-style: hidden;
+    opacity: 75%;
+}
+
+.gallery::after {
+    content: "";
+    flex-basis: 350px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.502);
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all 0.2s 0.1s ease-in-out;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
